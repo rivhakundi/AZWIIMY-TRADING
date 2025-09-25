@@ -5,7 +5,7 @@ v1.0.0 – Initial Release (2025-08-27)
 
     Created, "About Us", "Contact", "Products" and "faQ" pages
 
-    Added navigation bar and footer.
+    Added navigation bar and footer
 
     
 
