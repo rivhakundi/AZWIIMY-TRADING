@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <header>
+       <!-- Hamburger Menu -->
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
     <!--Logo-->
     <img src="../assets/sorghum-icon-vector-48698978.jpg" alt="Azwiimy trading enterprise" width="150" height="100">
     <!--Navigation-->
@@ -21,6 +28,21 @@
     
     </nav>
 </header>
+    <!-- Overlay for mobile menu -->
+<div class="overlay"></div>
+        <nav>
+         <ul>
+          <li><a href="#index">Home</a></li>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#contact">Contact us</a></li>
+          <li><a href="#products">Our Products</a></li>
+          <li><a href="#faQ">enquires</a></li>
+        </ul>
+        </nav>
+<!-- Mobile Navigation Menu -->
+<div class="mobile-nav">
+
+</div>
 <p>Discover the rich flavors and nutritional benefits of our heritage foods 
         - Boyne Roller Mabele and more. Handpicked and delivered with care.</p>
     
@@ -59,5 +81,31 @@
         <footer>
             <p style="text-align: center;">&copy; 2025 AZWIIMY TRADING ENTERPRISE</p>
         </footer>
+         <script>
+        const hamburger = document.querySelector('.hamburger');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const overlay = document.querySelector('.overlay');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+        // Close menu when clicking on a link
+const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileNav.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+    });
+</script>
 </body>
 </html>
