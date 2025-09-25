@@ -8,80 +8,83 @@
 </head>
 <body>
     <header>
-                
-       <!-- Hamburger Menu -->
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-        <!--Logo-->
-        <img src="./assets/sorghum-icon-vector-48698978.jpg" alt="Azwiimy trading enterprise" width="150" height="100">
-        <nav>
-         <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="pages/about.html">About us</a></li>
-          <li><a href="pages/contact.html">Contact us</a></li>
-          <li><a href="pages/products.html">Our Products</a></li>
-          <li><a href="pages/faQ.html">enquires</a></li>
-        </ul>
-        </nav>
-    </header>
-    <!-- Overlay for mobile menu -->
-<div class="overlay"></div>
-        <nav>
-         <ul>
-          <li><a href="#index">Home</a></li>
-          <li><a href="#about">About us</a></li>
-          <li><a href="#contact">Contact us</a></li>
-          <li><a href="#products">Our Products</a></li>
-          <li><a href="#faQ">enquires</a></li>
-        </ul>
-        </nav>
-<!-- Mobile Navigation Menu -->
-<div class="mobile-nav">
+        <div class="container header-container">
+            <!--Logo-->
+            <img src="./assets/sorghum-icon-vector-48698978.jpg" alt="Azwiimy trading enterprise" width="15%" height="10%">
+            <nav>
+             <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="pages/about.html">About us</a></li>
+              <li><a href="pages/contact.html">Contact us</a></li>
+              <li><a href="pages/products.html">Our Products</a></li>
+              <li><a href="pages/faQ.html">enquires</a></li>
+            </ul>
+            </nav>
 
-</div>
+            <!-- Hamburger Menu -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pages/about.html">About us</a></li>
+            <li><a href="pages/contact.html">Contact us</a></li>
+            <li><a href="pages/products.html">Our Products</a></li>
+            <li><a href="pages/faQ.html">Enquires</a></li>
+        </ul>
+    </div>
+
     <main>
         <!--My image-->
-<h1 style="background-color: chocolate; text-align: center;">WELCOME TO AZWIIMY TRADING Enterprise</h1>
-<p style="text-transform: capitalize;">Our expertise and experience gained over the years is evident in the success of our campaigns
-    and our high levels of customer retention. Our team takes a hands-on approach to Google Ads Management and works closely with our clients to make
-    every click count.</p>
-       <section>
-        <img src="./assets/GK4o4ZEW8AA-zer.jpg" alt="OUR BOYNE ROLLER MILLS MABELE" width="100%" height="50%">
-       </section>
-</main>
-<footer>
-    <p style="text-align: center;">&copy;2025 AZWIIMY TRADING ENTERPRISE</p>
-</footer>
- <script>
+        <h1 style="background-color: chocolate; text-align: center;">WELCOME TO AZWIIMY TRADING Enterprise</h1>
+        <p style="text-transform: capitalize;">Our expertise and experience gained over the years is evident in the success of our campaigns
+            and our high levels of customer retention. Our team takes a hands-on approach to Google Ads Management and works closely with our clients to make
+            every click count.</p>
+        <section>
+            <img src="./assets/GK4o4ZEW8AA-zer.jpg" alt="OUR BOYNE ROLLER MILLS MABELE" width="100%" height="50%">
+        </section>
+    </main>
+
+    <footer>
+        <p style="text-align: center;">&copy;2025 AZWIIMY TRADING ENTERPRISE</p>
+    </footer>
+
+    <script>
         const hamburger = document.querySelector('.hamburger');
-const mobileNav = document.querySelector('.mobile-nav');
-const overlay = document.querySelector('.overlay');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const overlay = document.querySelector('.overlay');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    mobileNav.classList.toggle('active');
-    overlay.classList.toggle('active');
-});
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
 
-overlay.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    mobileNav.classList.remove('active');
-    overlay.classList.remove('active');
-});
+        overlay.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+        });
 
-// Close menu when clicking on a link
-const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
-mobileNavLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        mobileNav.classList.remove('active');
-        overlay.classList.remove('active');
-    });
-});
-</script>
+        // Close menu when clicking on a link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>

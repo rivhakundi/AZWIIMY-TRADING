@@ -6,82 +6,85 @@
     <title>Azwiimy trading enterprise - About us</title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
-<header>
-       <!-- Hamburger Menu -->
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+<body>
+    <header>
+        <div class="container header-container">
+            <!--Logo-->
+            <img src="../assets/sorghum-icon-vector-48698978.jpg" alt="Azwiimy trading enterprise" width="15%" height="10%">
+            
+            <!--Navigation-->
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="contact.html">Contact us</a></li>
+                    <li><a href="products.html">Our Products</a></li>
+                    <li><a href="faQ.html">enquires</a></li>
+                </ul>
+            </nav>
+
+            <!-- Hamburger Menu -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-    </div>
-    <!--Logo-->
-    <img src="../assets/sorghum-icon-vector-48698978.jpg" alt="Azwiimy trading enterprise" width="150" height="100">
-    <!--Navigation-->
-    <nav>
+    </header>
+
+    <!-- Overlay for mobile menu -->
+    <div class="overlay"></div>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav">
         <ul>
             <li><a href="../index.html">Home</a></li>
-            <li><a href="about.html">About us</a></li>
-            <li><a href="contact.html">Contact us</a></li>
-             <li><a href="products.html">Our Products</a></li>
-             <li><a href="faQ.html">enquires</a></li>
-          </ul>
-    
-    </nav>
-</header>
-    <!-- Overlay for mobile menu -->
-<div class="overlay"></div>
-        <nav>
-         <ul>
-          <li><a href="#index">Home</a></li>
-          <li><a href="#about">About us</a></li>
-          <li><a href="#contact">Contact us</a></li>
-          <li><a href="#products">Our Products</a></li>
-          <li><a href="#faQ">enquires</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="faQ.html">enquiries</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
-        </nav>
-<!-- Mobile Navigation Menu -->
-<div class="mobile-nav">
+    </div>
 
-</div>
-<p>Discover the rich flavors and nutritional benefits of our heritage foods 
-        - Boyne Roller Mabele and more. Handpicked and delivered with care.</p>
-    
+    <!-- About Section -->
+    <main>
+        <p>Discover the rich flavors and nutritional benefits of our heritage foods 
+            - Boyne Roller Mabele and more. Handpicked and delivered with care.</p>
+        
+        <h1>ABOUT US:</h1>
+        
+        <h3>Earning an Honest Living Through Tradition</h3>
+        <p>Azwiimy Trading Enterprise was founded with a mission to preserve our cultural heritage through traditional
+            foods while providing honest, quality products to our community.</p>
+        <p>We specialize in sourcing the finest traditional grains like Boyne Roller and Mabele directly from local
+            farmers who maintain traditional farming practices.</p>
+        <p>Our commitment is to bring you authentic flavors with all the nutritional benefits that have sustained our 
+            communities for generations. Every product tells a story of our heritage and connection to the land.</p>
+        <p>By choosing Azwiimy, you're not just buying food - you're supporting local agriculture, preserving cultural traditions,
+            and nourishing your family with wholesome, natural ingredients.</p>
+        
+        <!--our current operations-->
+        <h3>Current Operations</h3>
+        <p>Physical store located in Tshilamba Mutale 0956</p>
+        <p>Primarily serves local community customers</p>
+        <p>We deliver for free to the neighbor villages</p>
+        <p>Cash-based transactions with limited digital presence</p>
 
-        <!-- About Section -->
-        <main>
-            <h1>ABOUT US:</h1>
-            
-               <h3>Earning an Honest Living Through Tradition</h3>
-                <p>Azwiimy Trading Enterprise was founded with a mission to preserve our cultural heritage through traditional
-                     foods while providing honest, quality products to our community.</p>
-                <p>We specialize in sourcing the finest traditional grains like Boyne Roller and Mabele directly from local
-                     farmers who maintain traditional farming practices.</p>
-                <p>Our commitment is to bring you authentic flavors with all the nutritional benefits that have sustained our 
-                    communities for generations.
-                 Every product tells a story of our heritage and connection to the land.</p>
-                <p>By choosing Azwiimy, you're not just buying food - you're supporting local agriculture, preserving cultural traditions,
-                     and nourishing your family with wholesome, natural ingredients.</p>
-            </h1>
-         <!--our current operations-->
-         <h3>Current operations</h3>
-         <p>Physical store located in Tshilamba Mutale 0956</p>
-         <p>Primarily serves local community customers</p>
-         <p>We deliver for free to the neighbor villages</p>
-         <p>Cash-based transactions with limited digital presence</p>
-
-         <!--OUR TEAM-->
-         <h3>Our Team</h3>
+        <!--OUR TEAM-->
+        <h3>Our Team</h3>
         <img src="../assets/Michael-B-Jordan-2019.webp" alt="Founder: Mudau Steven" width="50%" height="50%">
         <p>Founder: Mudau Steven</p>
         <img src="../assets/istockphoto-1353378620-612x612.jpg" alt="Sales Manager: Eveline Mudau" width="50%" height="50%">
         <p>Sales Manager: Mudau Eveline</p>
         <img src="../assets/1680251403687.jpg" alt="Store Manager:Mudau Mpho" width="50%" height="50%">
         <p>Store Manager: Mudau Mpho</p>
-        </main>
-        <footer>
-            <p style="text-align: center;">&copy; 2025 AZWIIMY TRADING ENTERPRISE</p>
-        </footer>
-         <script>
+    </main>
+
+    <footer>
+        <p style="text-align: center;">&copy; 2025 AZWIIMY TRADING ENTERPRISE</p>
+    </footer>
+
+    <script>
         const hamburger = document.querySelector('.hamburger');
         const mobileNav = document.querySelector('.mobile-nav');
         const overlay = document.querySelector('.overlay');
@@ -97,15 +100,16 @@
             mobileNav.classList.remove('active');
             overlay.classList.remove('active');
         });
+
         // Close menu when clicking on a link
-const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
-mobileNavLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        mobileNav.classList.remove('active');
-        overlay.classList.remove('active');
-    });
-    });
-</script>
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
