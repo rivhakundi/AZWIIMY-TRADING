@@ -4,36 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Azwiimy Trading Enterprise - Products</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../javaScript/cart.js">
 </head>
 <body>
-    <header>
-        <div class="container header-container">
-            <!--Logo-->
-            <img src="../assets/sorghum-icon-vector-48698978.jpg" alt="Azwiimy trading enterprise" width="15%" height="10%">
-            
-            <!---Navigation-->
-            <nav>
-                <ul>
-                  <li><a href="../index.html">Home</a></li>
-                  <li><a href="about.html">About us</a></li>
-                  <li><a href="contact.html">Contact us</a></li>
-                   <li><a href="products.html">Our Products</a></li>
-                   <li><a href="faQ.html">enquires</a></li>
-                </ul>
-            </nav>
+        <header>
+    <div class="container header-container">
+        <!--Logo-->
+        <img src="../assets/sorghum-icon-vector-48698978.jpg" 
+             alt="Azwiimy trading enterprise" width="15%" height="10%">
+        
+        <!---Navigation-->
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="about.html">About us</a></li>
+                <li><a href="contact.html">Contact us</a></li>
+                <li><a href="products.html">Our Products</a></li>
+                <li><a href="faQ.html">Enquiries</a></li>
+            </ul>
+        </nav>
 
-            <!-- Hamburger Menu -->
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+        <!-- Cart Button -->
+        <button class="cart-button" onclick="toggleCart()">
+            🛒
+            <span class="cart-count" id="cartCount" style="display: initial;">0</span>
+        </button>
+
+        <!-- Hamburger Menu -->
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-    </header>
-
-    <!-- Overlay for mobile menu -->
-    <div class="overlay"></div>
+    </div>
+</header>
 
     <!-- Mobile Navigation Menu -->
     <div class="mobile-nav">
@@ -47,6 +52,64 @@
     </div>
 
      <!-- Products Section -->
+     <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button onclick="toggleCart()" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer;">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p style="text-align: center; color: #999; margin-top: 50px;">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 20px; font-weight: bold;">
+                <span>Total:</span>
+                <span id="cartTotal">R 0</span>
+            </div>
+            <button onclick="showCheckout()" class="cta-button" style="width: 100%; padding: 15px;">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkoutModal">
+        <h2 style="margin-bottom: 20px; color: var(--primary);">Checkout</h2>
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">Full Name *</label>
+            <input type="text" id="customerName" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+        </div>
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">Phone Number *</label>
+            <input type="tel" id="customerPhone" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+        </div>
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">Email</label>
+            <input type="email" id="customerEmail" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+        </div>
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">Delivery Address *</label>
+            <textarea id="customerAddress" required rows="3" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+        </div>
+        <div style="background: var(--light); padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+            <h3 style="margin-bottom: 10px;">Order Summary</h3>
+            <div id="orderSummary"></div>
+            <div style="border-top: 2px solid var(--secondary); margin-top: 10px; padding-top: 10px; font-weight: bold; font-size: 18px;">
+                Total: <span id="checkoutTotal">R 0</span>
+            </div>
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <button onclick="hideCheckout()" style="flex: 1; padding: 12px; background: #ccc; border: none; border-radius: 5px; cursor: pointer;">Cancel</button>
+            <button onclick="placeOrder()" class="cta-button" style="flex: 2; padding: 12px;">Place Order</button>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="success-icon">✓</div>
+        <h2 style="color: #4CAF50; margin-bottom: 15px;">Order Sent!</h2>
+        <p style="font-size: 18px; margin-bottom: 10px;">Thank you for your order!</p>
+        <p style="color: #666;">We will contact you shortly to confirm your order.</p>
+    </div>
      <section id="products">
         <div class="container">
             <div class="section-header">
@@ -108,6 +171,25 @@
 
     <footer>
         <p style="text-align: center;">&copy;2025 AZWIIMY TRADING ENTERPRISE</p>
+        <div class="container">
+        <div class="social-links">
+            <a href="https://www.facebook.com/yourpage" target="_blank" title="Facebook">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/yourpage" target="_blank" title="Instagram">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+            <a href="https://www.tiktok.com/@yourpage" target="_blank" title="TikTok">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
     </footer>
 
     <script>
