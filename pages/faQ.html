@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Azwiimy Trading Enterprise - Enquiries</title>
     <link rel="stylesheet" href="../css/style.css">
-</head>
+    </head>
 <body>
     <header>
         <div class="container header-container">
@@ -47,7 +47,7 @@
     </div>
 
     <!-- FAQ Section -->
-    <section class="faq">
+    <section class="faq" style="padding: 80px 0;">
         <div class="container">
             <div class="section-header">
                 <h2>Frequently Asked Questions</h2>
@@ -58,7 +58,7 @@
                 <div class="accordion-item">
                     <div class="accordion-header">
                         <h3>What are the health benefits of traditional grains?</h3>
-                        <i class="fas fa-chevron-down"></i>
+                        <span>▼</span>
                     </div>
                     <div class="accordion-content">
                         <p>Traditional grains like sorghum (mabele) and maize are rich in fiber, vitamins, and minerals. They are gluten-free, help regulate blood sugar, and support digestive health. Our products are minimally processed to retain these nutritional benefits.</p>
@@ -68,63 +68,127 @@
                 <div class="accordion-item">
                     <div class="accordion-header">
                         <h3>Do you offer wholesale pricing for businesses?</h3>
-                        <i class="fas fa-chevron-down"></i>
+                        <span>▼</span>
                     </div>
                     <div class="accordion-content">
-                        <p>Yes, we offer competitive wholesale pricing for restaurants, retailers, and other businesses. Please use the enquiry form to request our wholesale catalog and pricing information.</p>
+                        <p>Yes, we offer competitive wholesale pricing for restaurants, retailers, and other businesses. Please use the enquiry form below to request our wholesale catalog and pricing information.</p>
                     </div>
                 </div>
                 
                 <div class="accordion-item">
                     <div class="accordion-header">
                         <h3>What areas do you deliver to?</h3>
-                        <i class="fas fa-chevron-down"></i>
+                        <span>▼</span>
                     </div>
                     <div class="accordion-content">
-                        <p>We currently deliver within a 50km radius of our store. For areas beyond this, we can arrange shipping at an additional cost. Contact us for specific delivery options to your location.</p>
+                        <p>We currently deliver within a 50km radius of our store in Tshilamba Mutale. We offer free delivery to neighboring villages. For areas beyond this, we can arrange shipping at an additional cost. Contact us for specific delivery options to your location.</p>
                     </div>
                 </div>
                 
                 <div class="accordion-item">
                     <div class="accordion-header">
                         <h3>How should I store traditional grains?</h3>
-                        <i class="fas fa-chevron-down"></i>
+                        <span>▼</span>
                     </div>
                     <div class="accordion-content">
-                        <p>For optimal freshness, store grains in airtight containers in a cool, dry place. Properly stored, our products can maintain quality for up to 6 months. Refrigeration can extend shelf life further.</p>
+                        <p>For optimal freshness, store grains in airtight containers in a cool, dry place. Properly stored, our products can maintain quality for up to 6 months. Do not refrigerate as this can affect the texture.</p>
                     </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>What payment methods do you accept?</h3>
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>We currently accept cash payments at our physical store. We are working on expanding our payment options to include digital payments in the near future.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Can I visit your store to see the products?</h3>
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Absolutely! We welcome customers to visit our store at House no 448 main road, Tshilamba Mutale, 0956. We're open Monday-Friday: 8:00 AM - 6:00 PM, Saturday: 9:00 AM - 4:00 PM, and closed on Sundays.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enquiry Form -->
+            <div class="enquiry-form">
+                <h2 style="color: var(--primary); text-align: center; margin-bottom: 30px;">Still Have Questions?</h2>
+                <p style="text-align: center; margin-bottom: 30px;">Fill out the form below and we'll get back to you as soon as possible.</p>
+                
+                <form id="enquiryForm">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" id="name" required placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" id="email" required placeholder="your@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" id="phone" required placeholder="(082) 520-2833">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Enquiry Type *</label>
+                        <select id="enquiryType" required>
+                            <option value="">Select an option</option>
+                            <option value="product">Product Information</option>
+                            <option value="wholesale">Wholesale Pricing</option>
+                            <option value="delivery">Delivery Options</option>
+                            <option value="general">General Enquiry</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Your Message *</label>
+                        <textarea id="message" required placeholder="Tell us more about your enquiry..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Submit Enquiry</button>
+                </form>
+
+                <div class="success-message" id="successMessage">
+                    ✓ Thank you! Your enquiry has been submitted. We'll get back to you soon.
                 </div>
             </div>
         </div>
     </section>
 
-
-    </section>
-
     <footer>
-        <p style="text-align: center;">&copy;2025 AZWIIMY TRADING ENTERPRISE</p>
         <div class="container">
-        <div class="social-links">
-            <a href="https://www.facebook.com/yourpage" target="_blank" title="Facebook">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-            </a>
-            <a href="https://www.instagram.com/yourpage" target="_blank" title="Instagram">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-            </a>
-            <a href="https://www.tiktok.com/@yourpage" target="_blank" title="TikTok">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                </svg>
-            </a>
+            <div class="social-links" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 20px;">
+                <a href="https://www.facebook.com/mudau.mpho" target="_blank" title="Facebook" style="color: white;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/mudauimani" target="_blank" title="Instagram" style="color: white;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="https://www.tiktok.com/@Azwiimy" target="_blank" title="TikTok" style="color: white;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                    </svg>
+                </a>
+            </div>
+            <p style="text-align: center;">&copy;2025 AZWIIMY TRADING ENTERPRISE</p>
         </div>
-    </div>
     </footer>
 
     <script>
+        // Hamburger menu
         const hamburger = document.querySelector('.hamburger');
         const mobileNav = document.querySelector('.mobile-nav');
         const overlay = document.querySelector('.overlay');
@@ -141,7 +205,6 @@
             overlay.classList.remove('active');
         });
 
-        // Close menu when clicking on a link
         const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
         mobileNavLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -149,6 +212,53 @@
                 mobileNav.classList.remove('active');
                 overlay.classList.remove('active');
             });
+        });
+
+        // Accordion functionality
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            
+            header.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all accordion items
+                accordionItems.forEach(i => i.classList.remove('active'));
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Enquiry form submission
+        document.getElementById('enquiryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const enquiryType = document.getElementById('enquiryType').value;
+            const message = document.getElementById('message').value;
+
+            // In a real application, you would send this data to a server
+            console.log('Enquiry submitted:', { name, email, phone, enquiryType, message });
+
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+
+            // Clear form
+            this.reset();
+
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+
+            // Scroll to success message
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
         });
     </script>
 </body>

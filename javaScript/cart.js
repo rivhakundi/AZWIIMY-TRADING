@@ -1,152 +1,200 @@
-/* -------------------------------
-   MOBILE MENU
----------------------------------*/
-const hamburger = document.querySelector('.hamburger');
-const mobileNav = document.querySelector('.mobile-nav');
-const overlay = document.querySelector('.overlay');
+  // Hamburger menu
+        const hamburger = document.querySelector('.hamburger');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const overlay = document.querySelector('.overlay');
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  mobileNav.classList.toggle('active');
-  overlay.classList.toggle('active');
-});
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
 
-overlay.addEventListener('click', () => {
-  hamburger.classList.remove('active');
-  mobileNav.classList.remove('active');
-  overlay.classList.remove('active');
-});
+        overlay.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+        });
 
-document.querySelectorAll('.mobile-nav a').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    mobileNav.classList.remove('active');
-    overlay.classList.remove('active');
-  });
-});
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+        });
 
-/* -------------------------------
-   CART SYSTEM
----------------------------------*/
-let cart = [];
+        // Shopping Cart Functionality
+        let cart = [];
 
-const cartCount = document.getElementById('cartCount');
-const cartItems = document.getElementById('cartItems');
-const cartTotal = document.getElementById('cartTotal');
-const cartOverlay = document.getElementById('cartOverlay');
-const cartSidebar = document.getElementById('cartSidebar');
-const checkoutModal = document.getElementById('checkoutModal');
-const successModal = document.getElementById('successModal');
+        const products = [
+            { id: 1, name: 'Mabele Coarse', price: 120, weight: '5 kg' },
+            { id: 2, name: 'Mabele Fine', price: 120, weight: '5 kg' },
+            { id: 3, name: 'Mabele Coarse (10kg)', price: 180, weight: '10 kg' },
+            { id: 4, name: 'Mabele Fine (10kg)', price: 180, weight: '10 kg' }
+        ];
 
-function toggleCart() {
-  cartOverlay.classList.toggle('active');
-  cartSidebar.classList.toggle('active');
-}
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
 
-function updateCartDisplay() {
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  cartTotal.textContent = `R ${total.toFixed(2)}`;
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
 
-  if (cart.length === 0) {
-    cartItems.innerHTML = '<p style="text-align:center; color:#999;">Your cart is empty</p>';
-    cartCount.style.display = 'none';
-  } else {
-    cartItems.innerHTML = cart
-      .map((item, index) => `
-        <div class="cart-item" style="display:flex; justify-content:space-between; align-items:center; margin:10px 0;">
-          <div>
-            <strong>${item.name}</strong><br>
-            <small>${item.quantity} × R ${item.price.toFixed(2)}</small>
-          </div>
-          <div>
-            <button onclick="changeQuantity(${index}, -1)">-</button>
-            <button onclick="changeQuantity(${index}, 1)">+</button>
-            <button onclick="removeFromCart(${index})" style="color:red;">×</button>
-          </div>
-        </div>
-      `)
-      .join('');
-    cartCount.style.display = 'inline-block';
-    cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-  }
-}
+            updateCart();
+            showNotification('Item added to cart!');
+        }
 
-/* ---- Add To Cart ---- */
-  const existingItem = cart.find(item => item.name === name);
-  if (existingItem) {
-    existingItem.quantity++;
-  } else {
-    cart.push({ name, price, quantity: 1 });
-  }
-  updateCartDisplay();
-  toggleCart();
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        }
 
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCart();
+                }
+            }
+        }
 
-/* ---- Change Quantity ---- */
-function changeQuantity(index, change) {
-  cart[index].quantity += change;
-  if (cart[index].quantity <= 0) cart.splice(index, 1);
-  updateCartDisplay();
-}
+        function updateCart() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
 
-/* ---- Remove Item ---- */
-function removeFromCart(index) {
-  cart.splice(index, 1);
-  updateCartDisplay();
-}
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-/* ---- Checkout ---- */
-function showCheckout() {
-  if (cart.length === 0) {
-    alert("Your cart is empty!");
-    return;
-  }
+            cartCount.textContent = totalItems;
+            cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
+            cartTotal.textContent = `R ${totalPrice}`;
 
-  document.getElementById('orderSummary').innerHTML = cart
-    .map(item => `<p>${item.name} × ${item.quantity} — R ${(item.price * item.quantity).toFixed(2)}</p>`)
-    .join('');
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: #999; margin-top: 50px;">Your cart is empty</p>';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <div>
+                                <h4 style="color: var(--primary); margin-bottom: 5px;">${item.name}</h4>
+                                <p style="font-size: 14px; color: #666;">${item.weight}</p>
+                            </div>
+                            <button onclick="removeFromCart(${item.id})" style="background: none; border: none; color: red; cursor: pointer; font-size: 20px;">×</button>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <button onclick="updateQuantity(${item.id}, -1)" style="background: var(--secondary); color: white; border: none; width: 30px; height: 30px; border-radius: 5px; cursor: pointer;">-</button>
+                                <span style="font-weight: bold; min-width: 30px; text-align: center;">${item.quantity}</span>
+                                <button onclick="updateQuantity(${item.id}, 1)" style="background: var(--secondary); color: white; border: none; width: 30px; height: 30px; border-radius: 5px; cursor: pointer;">+</button>
+                            </div>
+                            <span style="font-weight: bold; color: var(--primary);">R ${item.price * item.quantity}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
 
-  document.getElementById('checkoutTotal').textContent = cartTotal.textContent;
+        function toggleCart() {
+            const cartSidebar = document.getElementById('cartSidebar');
+            const cartOverlay = document.getElementById('cartOverlay');
+            cartSidebar.classList.toggle('active');
+            cartOverlay.classList.toggle('active');
+        }
 
-  checkoutModal.style.display = 'block';
-  cartSidebar.classList.remove('active');
-  cartOverlay.classList.remove('active');
-}
+        function showCheckout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
 
-/* ---- Hide Checkout ---- */
-function hideCheckout() {
-  checkoutModal.style.display = 'none';
-}
+            const checkoutModal = document.getElementById('checkoutModal');
+            const cartOverlay = document.getElementById('cartOverlay');
+            const orderSummary = document.getElementById('orderSummary');
+            const checkoutTotal = document.getElementById('checkoutTotal');
 
-/* ---- Place Order ---- */
-function placeOrder() {
-  const name = document.getElementById('customerName').value.trim();
-  const phone = document.getElementById('customerPhone').value.trim();
-  const address = document.getElementById('customerAddress').value.trim();
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-  if (!name || !phone || !address) {
-    alert('Please fill in all required fields.');
-    return;
-  }
+            orderSummary.innerHTML = cart.map(item => `
+                <div style="display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 14px;">
+                    <span>${item.name} x ${item.quantity}</span>
+                    <span>R ${item.price * item.quantity}</span>
+                </div>
+            `).join('');
 
-  cart = [];
-  updateCartDisplay();
-  checkoutModal.style.display = 'none';
-  successModal.style.display = 'block';
+            checkoutTotal.textContent = `R ${totalPrice}`;
+            checkoutModal.classList.add('active');
+            cartOverlay.classList.add('active');
+        }
 
-  setTimeout(() => successModal.style.display = 'none', 3000);
-}
+        function hideCheckout() {
+            const checkoutModal = document.getElementById('checkoutModal');
+            const cartOverlay = document.getElementById('cartOverlay');
+            checkoutModal.classList.remove('active');
+            if (!document.getElementById('cartSidebar').classList.contains('active')) {
+                cartOverlay.classList.remove('active');
+            }
+        }
 
-/* ---- Event Listeners for Buttons ---- */
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.product-card .cta-button').forEach(button => {
-    button.addEventListener('click', e => {
-      const product = e.target.closest('.product-card');
-      const name = product.querySelector('.product-title').textContent;
-      const price = parseFloat(product.querySelector('.product-price').textContent.replace(/[^\d.]/g, ''));
-      addToCart(name, price);
-    });
-  });
+        function placeOrder() {
+            const name = document.getElementById('customerName').value;
+            const phone = document.getElementById('customerPhone').value;
+            const address = document.getElementById('customerAddress').value;
 
-  updateCartDisplay();
-});
+            if (!name || !phone || !address) {
+                alert('Please fill in all required fields!');
+                return;
+            }
+
+            // Hide checkout modal
+            document.getElementById('checkoutModal').classList.remove('active');
+
+            // Show success modal
+            const successModal = document.getElementById('successModal');
+            successModal.classList.add('active');
+
+            // Clear form and cart after 3 seconds
+            setTimeout(() => {
+                successModal.classList.remove('active');
+                document.getElementById('cartOverlay').classList.remove('active');
+                document.getElementById('cartSidebar').classList.remove('active');
+                
+                // Clear form
+                document.getElementById('customerName').value = '';
+                document.getElementById('customerPhone').value = '';
+                document.getElementById('customerEmail').value = '';
+                document.getElementById('customerAddress').value = '';
+                
+                // Clear cart
+                cart = [];
+                updateCart();
+            }, 5000);
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: #4CAF50;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 5px;
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 2000);
+        }
