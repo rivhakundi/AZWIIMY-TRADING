@@ -3,27 +3,462 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azwiimy Trading Enterprise - Enquiries</title>
+    
+    <!-- SEO Title Tag -->
+    <title>FAQ & Enquiries - Azwiimy Trading Enterprise | Product Information & Support</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Get answers to frequently asked questions about Azwiimy Trading Enterprise's traditional grains, wholesale pricing, delivery options, and product storage. Submit enquiries for personalized assistance.">
+    <meta name="keywords" content="traditional grains FAQ, wholesale pricing, delivery information, product storage, mabele benefits, sorghum nutrition, business enquiries">
+    <meta name="author" content="Azwiimy Trading Enterprise">
+    <meta name="robots" content="index, follow">
+    
     <link rel="stylesheet" href="../css/style.css">
-    </head>
+    
+    <style>
+        :root {
+            --primary: #2c5f2d;
+            --secondary: #97bf0d;
+            --accent: #f9a825;
+            --dark: #333;
+            --light: #f5f5f5;
+            --error: #dc3545;
+            --success: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--dark);
+            transition: 0.3s;
+        }
+        
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 250px;
+            height: 100vh;
+            background: white;
+            z-index: 1001;
+            transition: 0.3s;
+            padding: 80px 20px 20px;
+        }
+        
+        .mobile-nav.active {
+            right: 0;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+        }
+        
+        .mobile-nav a {
+            display: block;
+            padding: 15px;
+            color: var(--dark);
+            text-decoration: none;
+            border-bottom: 1px solid var(--light);
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        /* Search Feature */
+        .search-container {
+            background: var(--light);
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .search-box {
+            display: inline-flex;
+            max-width: 600px;
+            width: 100%;
+            border: 2px solid var(--primary);
+            border-radius: 25px;
+            overflow: hidden;
+            background: white;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
+        
+        .search-box button {
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .search-box button:hover {
+            background: var(--secondary);
+        }
+        
+        /* Real-time Content */
+        .live-info {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 40px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            color: var(--primary);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .section-header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        /* Accordion Styles */
+        .accordion {
+            margin: 40px 0;
+        }
+        
+        .accordion-item {
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .accordion-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        
+        .accordion-header {
+            padding: 20px;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+        
+        .accordion-header:hover {
+            background: var(--secondary);
+        }
+        
+        .accordion-header h3 {
+            margin: 0;
+            font-size: 1.1em;
+            flex: 1;
+        }
+        
+        .accordion-header span {
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .accordion-item.active .accordion-header span {
+            transform: rotate(180deg);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: var(--light);
+        }
+        
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+            padding: 20px;
+        }
+        
+        .accordion-content p {
+            line-height: 1.8;
+            color: var(--dark);
+        }
+        
+        /* Enquiry Form */
+        .enquiry-form {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 60px 0;
+        }
+        
+        .enquiry-form h2 {
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .enquiry-form > p {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #666;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--light);
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-group.error input,
+        .form-group.error textarea,
+        .form-group.error select {
+            border-color: var(--error);
+            background: #fff5f5;
+        }
+        
+        .form-group.success input,
+        .form-group.success textarea,
+        .form-group.success select {
+            border-color: var(--success);
+        }
+        
+        .error-message {
+            color: var(--error);
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .form-group.error .error-message {
+            display: block;
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .submit-button:hover {
+            background: var(--secondary);
+        }
+        
+        .submit-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .success-message {
+            display: none;
+            padding: 20px;
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .success-message.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            transition: transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .section-header h2 {
+                font-size: 2em;
+            }
+            
+            .enquiry-form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
 <body>
     <header>
         <div class="container header-container">
-            <!--Logo-->
-            <img src="../assets/sorghum-icon-vector-48698978.jpg" alt="Azwiimy trading enterprise" width="15%" height="10%">
+            <img src="../assets/sorghum-icon-vector-48698978.jpg" 
+                 alt="Azwiimy Trading Enterprise Logo - Traditional Grain Products" width="80">
             
-            <!---Navigation-->
             <nav>
                 <ul>
-                  <li><a href="../index.html">Home</a></li>
-                  <li><a href="about.html">About us</a></li>
-                  <li><a href="contact.html">Contact us</a></li>
-                   <li><a href="products.html">Our Products</a></li>
-                   <li><a href="faQ.html">enquires</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="contact.html">Contact us</a></li>
+                    <li><a href="products.html">Our Products</a></li>
+                    <li><a href="faQ.html">Enquiries</a></li>
                 </ul>
             </nav>
 
-            <!-- Hamburger Menu -->
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -32,28 +467,45 @@
         </div>
     </header>
 
-    <!-- Overlay for mobile menu -->
     <div class="overlay"></div>
 
-    <!-- Mobile Navigation Menu -->
     <div class="mobile-nav">
         <ul>
             <li><a href="../index.html">Home</a></li>
             <li><a href="products.html">Products</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="faQ.html">enquiries</a></li>
+            <li><a href="faQ.html">Enquiries</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </div>
 
+    <!-- Search Feature -->
+    <div class="search-container">
+        <div class="container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search our website...">
+                <button onclick="performSearch()">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Real-time Content -->
+    <div class="container">
+        <div class="live-info">
+            <h3>🕒 Current Time: <span id="currentTime"></span></h3>
+            <p>📅 Today's Date: <span id="currentDate"></span></p>
+        </div>
+    </div>
+
     <!-- FAQ Section -->
-    <section class="faq" style="padding: 80px 0;">
+    <section class="faq">
         <div class="container">
             <div class="section-header">
                 <h2>Frequently Asked Questions</h2>
                 <p>Find answers to common questions about our products and services</p>
             </div>
             
+            <!-- Interactive Accordion -->
             <div class="accordion">
                 <div class="accordion-item">
                     <div class="accordion-header">
@@ -116,28 +568,31 @@
                 </div>
             </div>
 
-            <!-- Enquiry Form -->
+            <!-- Enquiry Form with JavaScript Validation -->
             <div class="enquiry-form">
-                <h2 style="color: var(--primary); text-align: center; margin-bottom: 30px;">Still Have Questions?</h2>
-                <p style="text-align: center; margin-bottom: 30px;">Fill out the form below and we'll get back to you as soon as possible.</p>
+                <h2>Still Have Questions?</h2>
+                <p>Fill out the form below and we'll get back to you as soon as possible.</p>
                 
-                <form id="enquiryForm">
-                    <div class="form-group">
+                <form id="enquiryForm" novalidate>
+                    <div class="form-group" id="nameGroup">
                         <label>Full Name *</label>
-                        <input type="text" id="name" required placeholder="Enter your full name">
+                        <input type="text" id="name" placeholder="Enter your full name" required>
+                        <span class="error-message" id="nameError">Please enter your full name</span>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" id="emailGroup">
                         <label>Email Address *</label>
-                        <input type="email" id="email" required placeholder="your@email.com">
+                        <input type="email" id="email" placeholder="your@email.com" required>
+                        <span class="error-message" id="emailError">Please enter a valid email address</span>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" id="phoneGroup">
                         <label>Phone Number *</label>
-                        <input type="tel" id="phone" required placeholder="(082) 520-2833">
+                        <input type="tel" id="phone" placeholder="(082) 520-2833" required>
+                        <span class="error-message" id="phoneError">Please enter a valid phone number</span>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" id="enquiryTypeGroup">
                         <label>Enquiry Type *</label>
                         <select id="enquiryType" required>
                             <option value="">Select an option</option>
@@ -147,14 +602,16 @@
                             <option value="general">General Enquiry</option>
                             <option value="other">Other</option>
                         </select>
+                        <span class="error-message" id="enquiryTypeError">Please select an enquiry type</span>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" id="messageGroup">
                         <label>Your Message *</label>
-                        <textarea id="message" required placeholder="Tell us more about your enquiry..."></textarea>
+                        <textarea id="message" placeholder="Tell us more about your enquiry..." required></textarea>
+                        <span class="error-message" id="messageError">Please enter your message (minimum 10 characters)</span>
                     </div>
 
-                    <button type="submit" class="submit-button">Submit Enquiry</button>
+                    <button type="submit" class="submit-button" id="submitBtn">Submit Enquiry</button>
                 </form>
 
                 <div class="success-message" id="successMessage">
@@ -166,24 +623,24 @@
 
     <footer>
         <div class="container">
-            <div class="social-links" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 20px;">
-                <a href="https://www.facebook.com/mudau.mpho" target="_blank" title="Facebook" style="color: white;">
+            <div class="social-links">
+                <a href="https://www.facebook.com/mudau.mpho" target="_blank" title="Visit our Facebook page" aria-label="Facebook">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                     </svg>
                 </a>
-                <a href="https://www.instagram.com/mudauimani" target="_blank" title="Instagram" style="color: white;">
+                <a href="https://www.instagram.com/mudauimani" target="_blank" title="Follow us on Instagram" aria-label="Instagram">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                     </svg>
                 </a>
-                <a href="https://www.tiktok.com/@Azwiimy" target="_blank" title="TikTok" style="color: white;">
+                <a href="https://www.tiktok.com/@Azwiimy" target="_blank" title="Watch us on TikTok" aria-label="TikTok">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
                     </svg>
                 </a>
             </div>
-            <p style="text-align: center;">&copy;2025 AZWIIMY TRADING ENTERPRISE</p>
+            <p>&copy;2025 AZWIIMY TRADING ENTERPRISE</p>
         </div>
     </footer>
 
@@ -205,13 +662,39 @@
             overlay.classList.remove('active');
         });
 
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
-        mobileNavLinks.forEach(link => {
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
                 mobileNav.classList.remove('active');
                 overlay.classList.remove('active');
             });
+        });
+
+        // Real-time date and time
+        function updateDateTime() {
+            const now = new Date();
+            const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            
+            document.getElementById('currentTime').textContent = now.toLocaleTimeString('en-US', timeOptions);
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', dateOptions);
+        }
+        
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+
+        // Search functionality
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value.trim();
+            if (searchTerm) {
+                alert(`Searching for: ${searchTerm}\n\nThis would redirect to search results page.`);
+            }
+        }
+
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
         });
 
         // Accordion functionality
@@ -233,32 +716,155 @@
             });
         });
 
-        // Enquiry form submission
-        document.getElementById('enquiryForm').addEventListener('submit', function(e) {
+        // Form Validation
+        const form = document.getElementById('enquiryForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
+        const enquiryTypeInput = document.getElementById('enquiryType');
+        const messageInput = document.getElementById('message');
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phoneRegex = /^[\d\s\-\(\)]+$/;
+
+        // Real-time validation
+        nameInput.addEventListener('blur', validateName);
+        emailInput.addEventListener('blur', validateEmail);
+        phoneInput.addEventListener('blur', validatePhone);
+        enquiryTypeInput.addEventListener('change', validateEnquiryType);
+        messageInput.addEventListener('blur', validateMessage);
+
+        // Clear errors on input
+        nameInput.addEventListener('input', () => clearError('nameGroup'));
+        emailInput.addEventListener('input', () => clearError('emailGroup'));
+        phoneInput.addEventListener('input', () => clearError('phoneGroup'));
+        enquiryTypeInput.addEventListener('change', () => clearError('enquiryTypeGroup'));
+        messageInput.addEventListener('input', () => clearError('messageGroup'));
+
+        function validateName() {
+            const name = nameInput.value.trim();
+            
+            if (name.length < 2) {
+                showError('nameGroup', 'Please enter your full name (at least 2 characters)');
+                return false;
+            }
+            
+            showSuccess('nameGroup');
+            return true;
+        }
+
+        function validateEmail() {
+            const email = emailInput.value.trim();
+            
+            if (!emailRegex.test(email)) {
+                showError('emailGroup', 'Please enter a valid email address');
+                return false;
+            }
+            
+            showSuccess('emailGroup');
+            return true;
+        }
+
+        function validatePhone() {
+            const phone = phoneInput.value.trim();
+            
+            if (phone.length < 10 || !phoneRegex.test(phone)) {
+                showError('phoneGroup', 'Please enter a valid phone number (at least 10 digits)');
+                return false;
+            }
+            
+            showSuccess('phoneGroup');
+            return true;
+        }
+
+        function validateEnquiryType() {
+            const enquiryType = enquiryTypeInput.value;
+            
+            if (!enquiryType) {
+                showError('enquiryTypeGroup', 'Please select an enquiry type');
+                return false;
+            }
+            
+            showSuccess('enquiryTypeGroup');
+            return true;
+        }
+
+        function validateMessage() {
+            const message = messageInput.value.trim();
+            
+            if (message.length < 10) {
+                showError('messageGroup', 'Please enter a message (at least 10 characters)');
+                return false;
+            }
+            
+            showSuccess('messageGroup');
+            return true;
+        }
+
+        function showError(groupId, message) {
+            const group = document.getElementById(groupId);
+            const errorSpan = group.querySelector('.error-message');
+            
+            group.classList.add('error');
+            group.classList.remove('success');
+            
+            if (message && errorSpan) {
+                errorSpan.textContent = message;
+            }
+        }
+
+        function showSuccess(groupId) {
+            const group = document.getElementById(groupId);
+            group.classList.remove('error');
+            group.classList.add('success');
+        }
+
+        function clearError(groupId) {
+            const group = document.getElementById(groupId);
+            group.classList.remove('error');
+            group.classList.remove('success');
+        }
+
+        // Form submission
+        form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const enquiryType = document.getElementById('enquiryType').value;
-            const message = document.getElementById('message').value;
-
-            // In a real application, you would send this data to a server
-            console.log('Enquiry submitted:', { name, email, phone, enquiryType, message });
-
-            // Show success message
-            document.getElementById('successMessage').style.display = 'block';
-
-            // Clear form
-            this.reset();
-
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                document.getElementById('successMessage').style.display = 'none';
-            }, 5000);
-
-            // Scroll to success message
-            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+            const isNameValid = validateName();
+            const isEmailValid = validateEmail();
+            const isPhoneValid = validatePhone();
+            const isEnquiryTypeValid = validateEnquiryType();
+            const isMessageValid = validateMessage();
+            
+            if (isNameValid && isEmailValid && isPhoneValid && isEnquiryTypeValid && isMessageValid) {
+                const submitBtn = document.getElementById('submitBtn');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+                
+                setTimeout(() => {
+                    document.getElementById('successMessage').classList.add('show');
+                    
+                    form.reset();
+                    clearError('nameGroup');
+                    clearError('emailGroup');
+                    clearError('phoneGroup');
+                    clearError('enquiryTypeGroup');
+                    clearError('messageGroup');
+                    
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Enquiry';
+                    
+                    setTimeout(() => {
+                        document.getElementById('successMessage').classList.remove('show');
+                    }, 5000);
+                    
+                    document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 1500);
+            } else {
+                const firstError = document.querySelector('.form-group.error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
         });
     </script>
 </body>
