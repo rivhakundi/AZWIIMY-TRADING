@@ -1693,3 +1693,205 @@ header {
         .live-info p {
             margin: 5px 0;
         }
+             /* Lightbox Styles */
+        .lightbox {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        }
+
+        .lightbox.active {
+            display: flex; /* Show when active */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            position: relative;
+        }
+
+        #lightboxImg {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .lightbox-close:hover,
+        .lightbox-close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+
+        .lightbox-nav button {
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            color: black;
+            padding: 10px 15px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        /* Search Highlight Style (for visual feedback on search) */
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+            padding: 2px 0;
+        }
+         /* Lightbox Styles */
+        .lightbox {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        }
+
+        .lightbox.active {
+            display: flex; /* Show when active */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            width: 90%;
+            max-width: 600px; /* Adjusted size for team images */
+            position: relative;
+        }
+
+        #lightboxImg {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .lightbox-close:hover,
+        .lightbox-close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Enforce pointer on team images to indicate clickability */
+        .team-image-container img {
+            cursor: pointer;
+        }
+           :root {
+            --primary: #5D4037; /* Example color */
+            --secondary: #8D6E63; /* Example color */
+            --dark: #3E2723; /* Example color */
+            --light: #EDEBEB; /* Example color */
+        }
+        
+        /* Ensure the mobile nav is visible and styled correctly for the cart button */
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* Style for the cart button when inside the mobile nav */
+        .mobile-nav .cart-list-item {
+            padding: 15px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2); /* Added separator */
+        }
+
+        .mobile-nav .cart-list-item:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-nav .cart-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%; /* Make it full width of the mobile-nav item */
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0 20px; /* Optional padding for better spacing */
+        }
+
+        .mobile-nav .cart-count {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 7px;
+            font-size: 14px;
+            position: relative;
+            top: -10px;
+            left: 5px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        
+        @media (min-width: 768px) {
+            .mobile-nav .cart-list-item {
+                display: none; 
+            }
+        }
+
+        @media (max-width: 767px) {
+             .header-container > .cart-button {
+                display: none;
+            }
+        }

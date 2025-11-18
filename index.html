@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- SEO Title Tag -->
-    <title>Home Azwiimy Trading Enterprise | Traditional South African Food Supplier</title>
+        <title>Home Azwiimy Trading Enterprise | Traditional South African Food Supplier</title>
     
-    <!-- SEO Meta Tags -->
     <meta name="description" content="Shop authentic South African traditional grains and mabele products from Azwiimy Trading Enterprise. High-quality Boyne Roller Mills products delivered to Tshilamba and surrounding areas.">
     <meta name="keywords" content="buy mabele, traditional grains online, sorghum products, Boyne Roller Mills, South African food shop, heritage grains, wholesale traditional food">
     <meta name="author" content="Azwiimy Trading Enterprise">
     <meta name="robots" content="index, follow">
     <title>Azwiimy trading enterprise - Home</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="javaScript/cart.js">
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="javaScript/cart.js"> 
+    
+    <style>
+   
+    </style>
 </head>
 <body>
     <header>
         <div class="container header-container">
-            <!--Logo-->
             <img src="./assets/sorghum-icon-vector-48698978.jpg" alt="Azwiimy trading enterprise" width="15%" height="10%">
             <nav>
              <ul>
@@ -30,7 +31,6 @@
             </ul>
             </nav>
 
-            <!-- Hamburger Menu -->
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -39,10 +39,8 @@
         </div>
     </header>
 
-    <!-- Overlay -->
     <div class="overlay"></div>
 
-    <!-- Mobile Navigation -->
     <div class="mobile-nav">
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -54,48 +52,44 @@
     </div>
 
     <main>
-        <!--Hero Section-->
         <h1 style="background-color: chocolate; text-align: center; padding: 20px; margin: 20px 0;">WELCOME TO AZWIIMY TRADING ENTERPRISE</h1>
         <div class="container">
-            <p style="text-align: center; font-size: 1.1em; margin: 20px 0; line-height: 1.6;">Our expertise and experience gained over the years is evident in the success of our campaigns
+            <p id="searchableText1" style="text-align: center; font-size: 1.1em; margin: 20px 0; line-height: 1.6;">Our expertise and experience gained over the years is evident in the success of our campaigns
                 and our high levels of customer retention. Our team takes a hands-on approach to Google Ads Management and works closely with our clients to make
                 every click count.</p>
         </div>
 
-                <!-- Organization Overview Section -->
-        <section class="overview" id="overview">
+                <section class="overview" id="overview">
             <div class="container">
                 <div class="section-header">
-                    <h2>Organization Overview</h2>
-                    <p>Learn about our mission, operations, and commitment to preserving cultural heritage</p>
+                    <h2 id="searchableText2">Organization Overview</h2>
+                    <p id="searchableText3">Learn about our mission, operations, and commitment to preserving cultural heritage</p>
                 </div>
-                 <!-- Search Feature -->
-    <div class="search-container">
+                 <div class="search-container">
         <div class="container">
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search our website..." aria-label="Search">
+                <input type="text" id="searchInput" placeholder="Search our website..." aria-label="Search" onkeypress="if(event.key === 'Enter') performSearch()">
                 <button onclick="performSearch()">Search</button>
             </div>
         </div>
     </div>
-      <!-- Real-time Content -->
-    <div class="container" style="margin: 20px auto;">
+      <div class="container" style="margin: 20px auto;">
         <div style="background: linear-gradient(135deg, #fff8e7 0%, #f5e6d3 100%); padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(139, 69, 19, 0.15); text-align: center; border: 2px solid rgba(139, 69, 19, 0.1);">
-            <h3 style="color: var(--primary); margin-bottom: 10px;">🕒 Current Time: <span id="currentTime"></span></h3>
-            <p style="color: var(--dark);">📅 Today's Date: <span id="currentDate"></span></p>
+            <h3 style="color: var(--primary); margin-bottom: 10px;">🕒 Current Time: <span id="currentTime">--:--:--</span></h3>
+            <p style="color: var(--dark);">📅 Today's Date: <span id="currentDate">--/--/----</span></p>
         </div>
     </div>
 
                 <div class="overview-content">
                     <div class="overview-text">
-                        <h3>Azwiimy Trading Enterprise</h3>
-                        <p><strong>Type:</strong> Small Business</p>
-                        <p><strong>Mission:</strong> To provide healthy and long-life as well as sustainable living and earning an honest living through the BOYNE ROLLER MILLS Mabele while preserving our cultural heritage.</p>
+                        <h3 id="searchableText4">Azwiimy Trading Enterprise</h3>
+                        <p id="searchableText5"><strong>Type:</strong> Small Business</p>
+                        <p id="searchableText6"><strong>Mission:</strong> To provide healthy and long-life as well as sustainable living and earning an honest living through the BOYNE ROLLER MILLS Mabele while preserving our cultural heritage.</p>
                         
-                        <p>Azwiimy Trading Enterprise has been operating for 7 months with 3 local shops. We currently rely on both social media and basic printed materials for outreach, lacking a centralized digital presence to effectively communicate our mission and reach customers.</p>
+                        <p id="searchableText7">Azwiimy Trading Enterprise has been operating for 7 months with 3 local shops. We currently rely on both social media and basic printed materials for outreach, lacking a centralized digital presence to effectively communicate our mission and reach customers.</p>
                         
-                        <h4>Current Operations:</h4>
-                        <ul class="overview-list">
+                        <h4 id="searchableText8">Current Operations:</h4>
+                        <ul id="searchableText9" class="overview-list">
                             <li>Physical store located in Tshilamba Mutale 0956</li>
                             <li>Primarily serves local community customers</li>
                             <li>Delivers to neighbor villages</li>
@@ -106,17 +100,16 @@
                     <div class="overview-image">
                         <i class="fas fa-store"></i>
         
-            <img src="./assets/GK4o4ZEW8AA-zer.jpg" alt="OUR BOYNE ROLLER MILLS MABELE" style="max-width: 70%; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+            <img src="./assets/GK4o4ZEW8AA-zer.jpg" alt="OUR BOYNE ROLLER MILLS MABELE" style="max-width: 70%; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);" onclick="openLightbox('./assets/GK4o4ZEW8AA-zer.jpg', 'OUR BOYNE ROLLER MILLS MABELE')">
                     </div>
                 </div>
             </div>
         </section>
-          <!-- Lightbox for Product Images -->
-    <div class="lightbox" id="productLightbox">
+          <div class="lightbox" id="productLightbox" onclick="closeLightbox(event)">
         <div class="lightbox-content">
             <div class="lightbox-close" onclick="closeLightbox()">&times;</div>
             <img id="lightboxImg" src="" alt="">
-            <div class="lightbox-nav">
+            <div class="lightbox-nav" style="display: none;"> 
                 <button class="lightbox-prev" onclick="changeLightboxImage(-1)">❮</button>
                 <button class="lightbox-next" onclick="changeLightboxImage(1)">❯</button>
             </div>
@@ -151,6 +144,7 @@
     </footer>
 
     <script>
+        // --- Hamburger Menu Logic (Existing) ---
         const hamburger = document.querySelector('.hamburger');
         const mobileNav = document.querySelector('.mobile-nav');
         const overlay = document.querySelector('.overlay');
@@ -158,8 +152,125 @@
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             mobileNav.classList.toggle('active');
-            overlay}
-        )
+            overlay.classList.toggle('active'); // Ensure overlay toggles as well
+        });
+
+        // --- 1. Real-time Time & Date Functionality ---
+        function updateTime() {
+            const now = new Date();
+            // Options for time formatting (e.g., HH:MM:SS)
+            const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            const timeString = now.toLocaleTimeString('en-ZA', timeOptions);
+            
+            // Options for date formatting (e.g., Day, Month DD, YYYY)
+            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = now.toLocaleDateString('en-ZA', dateOptions);
+
+            document.getElementById('currentTime').textContent = timeString;
+            document.getElementById('currentDate').textContent = dateString;
+        }
+
+        // Run once immediately, then every second
+        updateTime();
+        setInterval(updateTime, 1000);
+
+              function openLightbox(imageSrc, imageAlt) {
+            const lightbox = document.getElementById('productLightbox');
+            const img = document.getElementById('lightboxImg');
+            
+            img.src = imageSrc;
+            img.alt = imageAlt;
+            
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling while lightbox is open
+        }
+
+        function closeLightbox(event) {
+            // Close only if the close button is clicked, or if the user clicks the dark backdrop
+            if (!event || event.target.id === 'productLightbox' || event.target.classList.contains('lightbox-close')) {
+                document.getElementById('productLightbox').classList.remove('active');
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            }
+        }
+        
+        // Close lightbox on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // --- 3. Search Functionality ---
+        // Defines the IDs of the elements you want to search through.
+        const searchableElementIds = [
+            'searchableText1', 'searchableText2', 'searchableText3', 'searchableText4',
+            'searchableText5', 'searchableText6', 'searchableText7', 'searchableText8', 
+            'searchableText9'
+        ];
+        
+        // Function to remove all previous highlights
+        function removeHighlights() {
+            searchableElementIds.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    // Check if the content was wrapped in a span and restore it
+                    const content = element.innerHTML;
+                    element.innerHTML = content.replace(/<span class="highlight">([^<]*)<\/span>/gi, '$1');
+                }
+            });
+        }
+
+        // Main search function
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value.trim();
+            removeHighlights(); // Remove previous highlights first
+
+            if (searchTerm.length === 0) {
+                alert('Please enter a search term.');
+                return;
+            }
+
+            let foundCount = 0;
+            const regex = new RegExp(searchTerm, 'gi'); // 'g' for global, 'i' for case-insensitive
+
+            searchableElementIds.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    const originalText = element.textContent; // Get the plain text content
+                    let newHtml = originalText;
+                    let matches = 0;
+                    
+                    // Replace the search term with the highlighted version
+                    newHtml = originalText.replace(regex, function(match) {
+                        matches++;
+                        return `<span class="highlight">${match}</span>`;
+                    });
+                    
+                    if (matches > 0) {
+                        element.innerHTML = newHtml; 
+                        foundCount += matches;
+                    }
+                }
+            });
+
+            if (foundCount > 0) {
+                alert(`Found ${foundCount} instance(s) of "${searchTerm}" on this page.`);
+                // Scroll to the first highlighted element
+                const firstHighlight = document.querySelector('.highlight');
+                if (firstHighlight) {
+                    firstHighlight.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            } else {
+                alert(`No results found for "${searchTerm}".`);
+            }
+        }
+
+        // Helper function (not directly used in the final version but provided in your original script)
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            removeHighlights();
+        }
+    
  </script>
 </body>
 </html>
