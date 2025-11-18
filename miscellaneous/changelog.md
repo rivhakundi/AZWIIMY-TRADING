@@ -152,4 +152,7 @@ Technical
 
 
     REFERENCES
-    W3Schools. (2025, September 12). W3Schools. Retrieved from W3Schools: https://www.w3schools.com/cssref/pr_class_cursor.php
+   Taylor, J.R.N. and Emmambux, M.N., 2008. Developments in the processing of sorghum and millets to food and beverages. In: The encyclopedia of grain science. London: Academic Press, pp. 110-120.
+   Shackleton, S.E. and Shackleton, C.M., 2004. The importance of non-timber forest products in rural livelihood security and mitigating HIV/AIDS in South Africa. Development Southern Africa, 21(5), pp. 651-671.
+   : Oelofse, S., Van Zyl, M. and Van der Walt, M., 2017. Consumer preferences for traditional food: A South African perspective. African Journal of Hospitality, Tourism and Leisure, 6(3).
+   Murendo, C., De Groote, H., Giller, K.E. and Gethi, J., 2015. Adoption of maize, sorghum and millet innovations in Eastern and Southern Africa. CIMMYT, ISBN: 978-92-9053-433-4.
