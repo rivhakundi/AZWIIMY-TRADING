@@ -13,7 +13,7 @@
     <meta name="author" content="Azwiimy Trading Enterprise">
     <meta name="robots" content="index, follow">
     
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/style.css">
 
 </head>
 <body>
@@ -284,5 +284,266 @@
             { id: 1, name: 'Mabele Coarse', price: 120, weight: '5 kg', image: '../assets/DCMcxliXUAAV9gV.jpg' },
             { id: 2, name: 'Mabele Fine', price: 120, weight: '5 kg', image: '../assets/download.jpg' },
             { id: 3, name: 'Mabele Coarse (10kg)', price: 180, weight: '10 kg', image: '../assets/DCMcxliXUAAV9gV.jpg' },
-             {id: 4, name: 'Mabele Fine (10kg)', price: 180, weight: '10 kg', image: '../assets/download.jpg'}]
+             {id: 4, name: 'Mabele Fine (10kg)', price: 180, weight: '10 kg', image: '../assets/download.jpg' }
+        ];
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCart();
+            showNotification('Item added to cart!');
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        }
+
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCart();
+                }
+            }
+        }
+
+        function updateCart() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            cartCount.textContent = totalItems;
+            cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
+            cartTotal.textContent = `R ${totalPrice}`;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: #999; margin-top: 50px;">Your cart is empty</p>';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <div>
+                                <h4 style="color: var(--primary); margin-bottom: 5px;">${item.name}</h4>
+                                <p style="font-size: 14px; color: #666;">${item.weight}</p>
+                            </div>
+                            <button onclick="removeFromCart(${item.id})" style="background: none; border: none; color: red; cursor: pointer; font-size: 20px;">×</button>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <button onclick="updateQuantity(${item.id}, -1)" style="background: var(--secondary); color: white; border: none; width: 30px; height: 30px; border-radius: 5px; cursor: pointer;">-</button>
+                                <span style="font-weight: bold; min-width: 30px; text-align: center;">${item.quantity}</span>
+                                <button onclick="updateQuantity(${item.id}, 1)" style="background: var(--secondary); color: white; border: none; width: 30px; height: 30px; border-radius: 5px; cursor: pointer;">+</button>
+                            </div>
+                            <span style="font-weight: bold; color: var(--primary);">R ${item.price * item.quantity}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function toggleCart() {
+            const cartSidebar = document.getElementById('cartSidebar');
+            const cartOverlay = document.getElementById('cartOverlay');
+            cartSidebar.classList.toggle('active');
+            cartOverlay.classList.toggle('active');
+        }
+
+        function showCheckout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            const checkoutModal = document.getElementById('checkoutModal');
+            const cartOverlay = document.getElementById('cartOverlay');
+            const orderSummary = document.getElementById('orderSummary');
+            const checkoutTotal = document.getElementById('checkoutTotal');
+
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            orderSummary.innerHTML = cart.map(item => `
+                <div style="display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 14px;">
+                    <span>${item.name} x ${item.quantity}</span>
+                    <span>R ${item.price * item.quantity}</span>
+                </div>
+            `).join('');
+
+            checkoutTotal.textContent = `R ${totalPrice}`;
+            checkoutModal.classList.add('active');
+            cartOverlay.classList.add('active');
+        }
+
+        function hideCheckout() {
+            const checkoutModal = document.getElementById('checkoutModal');
+            const cartOverlay = document.getElementById('cartOverlay');
+            checkoutModal.classList.remove('active');
+            if (!document.getElementById('cartSidebar').classList.contains('active')) {
+                cartOverlay.classList.remove('active');
+            }
+        }
+
+        function placeOrder() {
+            const name = document.getElementById('customerName').value;
+            const phone = document.getElementById('customerPhone').value;
+            const address = document.getElementById('customerAddress').value;
+
+            if (!name || !phone || !address) {
+                alert('Please fill in all required fields!');
+                return;
+            }
+
+            // Hide checkout modal
+            document.getElementById('checkoutModal').classList.remove('active');
+
+            // Show success modal
+            const successModal = document.getElementById('successModal');
+            successModal.classList.add('active');
+
+            // Clear form and cart after 5 seconds
+            setTimeout(() => {
+                successModal.classList.remove('active');
+                document.getElementById('cartOverlay').classList.remove('active');
+                document.getElementById('cartSidebar').classList.remove('active');
+                
+                // Clear form
+                document.getElementById('customerName').value = '';
+                document.getElementById('customerPhone').value = '';
+                document.getElementById('customerEmail').value = '';
+                document.getElementById('customerAddress').value = '';
+                
+                // Clear cart
+                cart = [];
+                updateCart();
+            }, 5000);
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: #4CAF50;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 5px;
+                z-index: 10000;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 2000);
+        }
+
+        // Product Search Functionality
+        function searchProducts() {
+            const searchTerm = document.getElementById('productSearch').value.toLowerCase().trim();
+            const productCards = document.querySelectorAll('.product-card');
+            const noResults = document.getElementById('noResults');
+            let foundCount = 0;
+
+            if (!searchTerm) {
+                productCards.forEach(card => card.style.display = 'block');
+                noResults.style.display = 'none';
+                return;
+            }
+
+            productCards.forEach(card => {
+                const keywords = card.getAttribute('data-keywords').toLowerCase();
+                const name = card.getAttribute('data-name').toLowerCase();
+                
+                if (keywords.includes(searchTerm) || name.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    foundCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            noResults.style.display = foundCount === 0 ? 'block' : 'none';
+        }
+
+        function clearSearch() {
+            document.getElementById('productSearch').value = '';
+            searchProducts();
+        }
+
+        // Allow search on Enter key
+        document.getElementById('productSearch').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchProducts();
+            }
+        });
+
+        // Product Image Lightbox
+        let currentLightboxIndex = 0;
+
+        function openProductLightbox(index) {
+            currentLightboxIndex = index;
+            const lightbox = document.getElementById('productLightbox');
+            const img = document.getElementById('lightboxImg');
+            
+            img.src = products[index].image;
+            img.alt = products[index].name;
+            
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('productLightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeLightboxImage(direction) {
+            currentLightboxIndex += direction;
+            
+            if (currentLightboxIndex < 0) {
+                currentLightboxIndex = products.length - 1;
+            } else if (currentLightboxIndex >= products.length) {
+                currentLightboxIndex = 0;
+            }
+            
+            const img = document.getElementById('lightboxImg');
+            img.src = products[currentLightboxIndex].image;
+            img.alt = products[currentLightboxIndex].name;
+        }
+
+        // Close lightbox on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                changeLightboxImage(-1);
+            } else if (e.key === 'ArrowRight') {
+                changeLightboxImage(1);
+            }
+        });
+
+        // Close lightbox when clicking outside image
+        document.getElementById('productLightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
  
