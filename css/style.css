@@ -99,176 +99,7 @@
             background-color: rgba(255,255,255,0.2);
         }
         
-        /* Hamburger Menu Styles */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            width: 30px;
-            height: 21px;
-            position: relative;
-            z-index: 1001;
-        }
-        
-        .hamburger span {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background-color: var(--white);
-            border-radius: 3px;
-            transition: all 0.3s ease;
-            transform-origin: center;
-        }
-        
-        .hamburger span:nth-child(1) {
-            margin-bottom: 7px;
-        }
-        
-        .hamburger span:nth-child(3) {
-            margin-top: 7px;
-        }
-        
-        /* Hamburger Animation when active */
-        .hamburger.active span:nth-child(1) {
-            transform: translateY(10px) rotate(45deg);
-        }
-        
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .hamburger.active span:nth-child(3) {
-            transform: translateY(-10px) rotate(-45deg);
-        }
-        
-        .cta-button {
-            background-color: var(--accent);
-            color: var(--white);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .cta-button:hover {
-            background-color: var(--dark);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            color: var(--white);
-            text-align: center;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-        }
-        
-        /* Section Styles */
-        section {
-            padding: 80px 0;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-header h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--accent);
-        }
-        
-        .section-header p {
-            max-width: 700px;
-            margin: 20px auto 0;
-            font-size: 1.1rem;
-            color: var(--dark);
-        }
-        
-        /* Organization Overview */
-        .overview {
-            background-color: var(--light);
-        }
-        
-        .overview-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-        
-        .overview-text h3 {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        .overview-list {
-            margin: 20px 0;
-            padding-left: 20px;
-        }
-        
-        .overview-list li {
-            margin-bottom: 10px;
-            position: relative;
-        }
-        
-        .overview-image {
-            height: 400px;
-            background-color: var(--accent);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            color: var(--light);
-        }
-        
+      
         /* Products Section */
         .products-grid {
             display: grid;
@@ -1654,4 +1485,211 @@ header {
             .live-info p {
                 font-size: 0.9em;
             }
+        }
+         /* Real-time Content */
+        .live-info {
+            background: linear-gradient(135deg, #2c5f2d, #97bf0d);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            text-align: center;
+            max-width: 1200px;
+        }
+        
+        .live-info h3 {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        
+        .live-info p {
+            margin: 5px 0;
+        }
+          /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 30px;
+            height: 21px;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--white);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+        
+        .hamburger span:nth-child(1) {
+            margin-bottom: 7px;
+        }
+        
+        .hamburger span:nth-child(3) {
+            margin-top: 7px;
+        }
+        
+        /* Hamburger Animation when active */
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(10px) rotate(45deg);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-10px) rotate(-45deg);
+        }
+        
+        .cta-button {
+            background-color: var(--accent);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .section-header p {
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+        
+        /* Organization Overview */
+        .overview {
+            background-color: var(--light);
+        }
+        
+        .overview-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .overview-text h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .overview-list {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+        
+        .overview-list li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .overview-image {
+            height: 400px;
+            background-color: var(--accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--light);
+        }
+          /* Real-time Content */
+        .live-info {
+            background: linear-gradient(135deg, #2c5f2d, #97bf0d);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            text-align: center;
+            max-width: 1200px;
+        }
+        
+        .live-info h3 {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        
+        .live-info p {
+            margin: 5px 0;
         }
