@@ -15,12 +15,12 @@
     
     <link rel="stylesheet" href="../css/style.css">
     
-</head>
+    </head>
 <body>
     <header>
         <div class="container header-container">
             <img src="../assets/sorghum-icon-vector-48698978.jpg" 
-                 alt="Azwiimy Trading Enterprise Logo - Traditional Grain Supplier" width="80">
+                 alt="Azwiimy Trading Enterprise Logo - Traditional Grain Supplier">
 
             <nav>
                 <ul>
@@ -99,7 +99,7 @@
                 </table>
             </section>
 
-            <!-- Interactive Google Maps Location -->
+            <!-- Google Maps Location -->
             <section class="map-section">
                 <h2>Find Us Here</h2>
                 <iframe 
@@ -107,44 +107,39 @@
                     allowfullscreen=""
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"
-                    title="Azwiimy Trading Enterprise Location Map - Tshilamba, Mutale">
+                    title="Azwiimy Trading Enterprise Location - Tshilamba, Mutale">
                 </iframe>
             </section>
 
-            <!-- Contact Form with JavaScript Validation -->
+            <!-- Contact Form -->
             <section class="contact-form-section">
                 <h2>Send Us a Message</h2>
-                
-                <div class="success-message" id="successMessage">
-                    ✓ Thank you! Your message has been sent successfully. We'll get back to you soon.
-                </div>
-                
-                <form id="contactForm" novalidate>
-                    <div class="form-group" id="nameGroup">
+                <form id="contactForm">
+                    <div class="form-group">
                         <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-                        <span class="error-message" id="nameError">Please enter your full name</span>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
                     </div>
                     
-                    <div class="form-group" id="emailGroup">
+                    <div class="form-group">
                         <label for="email">Email Address *</label>
                         <input type="email" id="email" name="email" placeholder="your@email.com" required>
-                        <span class="error-message" id="emailError">Please enter a valid email address</span>
                     </div>
                     
-                    <div class="form-group" id="phoneGroup">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" placeholder="(082) 123-4567" required>
-                        <span class="error-message" id="phoneError">Please enter a valid phone number</span>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="text" id="phone" name="phone" placeholder="(082) 123-4567">
                     </div>
                     
-                    <div class="form-group" id="messageGroup">
+                    <div class="form-group">
                         <label for="message">Your Message *</label>
                         <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
-                        <span class="error-message" id="messageError">Please enter your message (minimum 10 characters)</span>
                     </div>
 
-                    <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                    
+                    <div class="success-message" id="successMessage">
+                        ✓ Thank you! Your message has been sent successfully. We'll get back to you soon.
+                    </div>
                 </form>
             </section>
         </div>
@@ -176,7 +171,7 @@
     </footer>
 
     <script>
-        // Hamburger menu
+        // Hamburger menu functionality
         const hamburger = document.querySelector('.hamburger');
         const mobileNav = document.querySelector('.mobile-nav');
         const overlay = document.querySelector('.overlay');
@@ -193,6 +188,7 @@
             overlay.classList.remove('active');
         });
 
+        // Close mobile menu when a link is clicked
         document.querySelectorAll('.mobile-nav a').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
@@ -201,183 +197,89 @@
             });
         });
 
-        // Real-time date and time
+        // Real-time date and time functionality
         function updateDateTime() {
             const now = new Date();
-            const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
-            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            
+            // Time format: 12-hour with AM/PM
+            const timeOptions = { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit', 
+                hour12: true 
+            };
+            
+            // Date format: Full date with day name
+            const dateOptions = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
             
             document.getElementById('currentTime').textContent = now.toLocaleTimeString('en-US', timeOptions);
             document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', dateOptions);
         }
         
+        // Update immediately on load
         updateDateTime();
+        
+        // Update every second for live clock
         setInterval(updateDateTime, 1000);
 
         // Search functionality
         function performSearch() {
             const searchTerm = document.getElementById('searchInput').value.trim();
             if (searchTerm) {
-                alert(`Searching for: ${searchTerm}\n\nThis would redirect to search results page.`);
+                alert(`Searching for: "${searchTerm}"\n\nIn a full implementation, this would redirect to a search results page showing:\n- Products matching "${searchTerm}"\n- Pages with relevant content\n- Contact information if searching for "contact" or "phone"`);
                 // In production: window.location.href = `/search?q=${encodeURIComponent(searchTerm)}`;
+            } else {
+                alert('Please enter a search term');
             }
         }
 
+        // Search on Enter key press
         document.getElementById('searchInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 performSearch();
             }
         });
 
-        // Form Validation
-        const form = document.getElementById('contactForm');
-        const nameInput = document.getElementById('name');
-        const emailInput = document.getElementById('email');
-        const phoneInput = document.getElementById('phone');
-        const messageInput = document.getElementById('message');
-
-        // Email validation regex
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        
-        // Phone validation regex (supports various formats)
-        const phoneRegex = /^[\d\s\-\(\)]+$/;
-
-        // Real-time validation
-        nameInput.addEventListener('blur', () => validateName());
-        emailInput.addEventListener('blur', () => validateEmail());
-        phoneInput.addEventListener('blur', () => validatePhone());
-        messageInput.addEventListener('blur', () => validateMessage());
-
-        // Clear errors on input
-        nameInput.addEventListener('input', () => clearError('nameGroup'));
-        emailInput.addEventListener('input', () => clearError('emailGroup'));
-        phoneInput.addEventListener('input', () => clearError('phoneGroup'));
-        messageInput.addEventListener('input', () => clearError('messageGroup'));
-
-        function validateName() {
-            const nameGroup = document.getElementById('nameGroup');
-            const name = nameInput.value.trim();
-            
-            if (name.length < 2) {
-                showError('nameGroup', 'Please enter your full name (at least 2 characters)');
-                return false;
-            }
-            
-            showSuccess('nameGroup');
-            return true;
-        }
-
-        function validateEmail() {
-            const emailGroup = document.getElementById('emailGroup');
-            const email = emailInput.value.trim();
-            
-            if (!emailRegex.test(email)) {
-                showError('emailGroup', 'Please enter a valid email address');
-                return false;
-            }
-            
-            showSuccess('emailGroup');
-            return true;
-        }
-
-        function validatePhone() {
-            const phoneGroup = document.getElementById('phoneGroup');
-            const phone = phoneInput.value.trim();
-            
-            if (phone.length < 10 || !phoneRegex.test(phone)) {
-                showError('phoneGroup', 'Please enter a valid phone number (at least 10 digits)');
-                return false;
-            }
-            
-            showSuccess('phoneGroup');
-            return true;
-        }
-
-        function validateMessage() {
-            const messageGroup = document.getElementById('messageGroup');
-            const message = messageInput.value.trim();
-            
-            if (message.length < 10) {
-                showError('messageGroup', 'Please enter a message (at least 10 characters)');
-                return false;
-            }
-            
-            showSuccess('messageGroup');
-            return true;
-        }
-
-        function showError(groupId, message) {
-            const group = document.getElementById(groupId);
-            const errorSpan = group.querySelector('.error-message');
-            
-            group.classList.add('error');
-            group.classList.remove('success');
-            
-            if (message) {
-                errorSpan.textContent = message;
-            }
-        }
-
-        function showSuccess(groupId) {
-            const group = document.getElementById(groupId);
-            group.classList.remove('error');
-            group.classList.add('success');
-        }
-
-        function clearError(groupId) {
-            const group = document.getElementById(groupId);
-            group.classList.remove('error');
-            group.classList.remove('success');
-        }
-
-        // Form submission with validation
-        form.addEventListener('submit', function(e) {
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Validate all fields
-            const isNameValid = validateName();
-            const isEmailValid = validateEmail();
-            const isPhoneValid = validatePhone();
-            const isMessageValid = validateMessage();
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
             
-            // If all validations pass
-            if (isNameValid && isEmailValid && isPhoneValid && isMessageValid) {
-                // Disable submit button
-                const submitBtn = document.getElementById('submitBtn');
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Sending...';
-                
-                // Simulate email sending (in production, this would be an actual API call)
-                setTimeout(() => {
-                    // Show success message
-                    document.getElementById('successMessage').classList.add('show');
-                    
-                    // Clear form
-                    form.reset();
-                    clearError('nameGroup');
-                    clearError('emailGroup');
-                    clearError('phoneGroup');
-                    clearError('messageGroup');
-                    
-                    // Re-enable submit button
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Send Message';
-                    
-                    // Hide success message after 5 seconds
-                    setTimeout(() => {
-                        document.getElementById('successMessage').classList.remove('show');
-                    }, 5000);
-                    
-                    // Scroll to success message
-                    document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 1500);
-            } else {
-                // Scroll to first error
-                const firstError = document.querySelector('.form-group.error');
-                if (firstError) {
-                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('show');
+            
+            // Clear form
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+            
+            // Scroll to success message
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // In production, you would send the data to a server here:
+            /*
+            fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, email, phone, message })
+            });
+            */
         });
     </script>
 </body>
