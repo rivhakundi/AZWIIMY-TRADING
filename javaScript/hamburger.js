@@ -355,3 +355,82 @@ function closeMenu() {
 // Make functions globally accessible
 window.toggleMenu = toggleMenu;
 window.closeMenu = closeMenu;
+// Hamburger Menu Functionality - Works across all pages
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Get all necessary elements
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const overlay = document.querySelector('.overlay');
+    const body = document.body;
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+    
+    // Check if elements exist before adding event listeners
+    if (!hamburger || !mobileNav || !overlay) {
+        console.warn('Hamburger menu elements not found');
+        return;
+    }
+    
+    // Function to open menu
+    function openMenu() {
+        hamburger.classList.add('active');
+        mobileNav.classList.add('active');
+        overlay.classList.add('active');
+        body.classList.add('menu-open');
+    }
+    
+    // Function to close menu
+    function closeMenu() {
+        hamburger.classList.remove('active');
+        mobileNav.classList.remove('active');
+        overlay.classList.remove('active');
+        body.classList.remove('menu-open');
+    }
+    
+    // Toggle menu when hamburger is clicked
+    hamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        
+        if (hamburger.classList.contains('active')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+    
+    // Close menu when overlay is clicked
+    overlay.addEventListener('click', function() {
+        closeMenu();
+    });
+    
+    // Close menu when a link is clicked (important for navigation)
+    mobileNavLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            closeMenu();
+        });
+    });
+    
+    // Close menu when ESC key is pressed
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && hamburger.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+    
+    // Ensure menu is closed when window is resized to desktop
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && hamburger.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+    
+    // Reset menu state on page load (important for browser back button)
+    window.addEventListener('pageshow', function(event) {
+        // Close menu if page is loaded from cache (back button)
+        if (event.persisted) {
+            closeMenu();
+        }
+    });
+    
+});
+
