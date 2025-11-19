@@ -4053,3 +4053,114 @@ body.menu-open {
 }
     }
 }
+/* --- Hamburger Menu & Mobile Navigation Styles --- */
+
+/* Base style for the hamburger container */
+.hamburger {
+    display: none; /* Hide on desktop by default */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 1001; /* Ensure it's above other content */
+    padding: 5px; /* Add padding for a bigger clickable area */
+}
+
+/* Style for the three spans (the "bars") */
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #000; /* Adjust color as needed */
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- Mobile Navigation and Overlay --- */
+
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px; /* Adjust width as needed */
+    height: 100%;
+    background-color: #f4f4f4; /* Adjust background color */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%); /* Start off-screen */
+    transition: transform 0.4s ease-out;
+    z-index: 1000;
+    padding-top: 80px; /* Space for the header/logo */
+}
+
+/* State when menu is ACTIVE (slide into view) */
+.mobile-nav.active {
+    transform: translateX(0);
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav li a {
+    display: block;
+    padding: 15px 25px;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.1em;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s;
+}
+
+.mobile-nav li a:hover {
+    background-color: #eee;
+}
+
+.overlay {
+    display: none; /* Hide by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    transition: opacity 0.4s ease-out;
+    opacity: 0;
+}
+
+/* State when overlay is ACTIVE (show with full opacity) */
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* --- Hamburger Animation (when active) --- */
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0; /* Hide the middle bar */
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+/* --- Media Query: Show Hamburger on Mobile/Tablet --- */
+
+@media (max-width: 768px) {
+    /* Display the hamburger icon */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Hide the desktop navigation */
+    header nav {
+        display: none;
+    }
+}

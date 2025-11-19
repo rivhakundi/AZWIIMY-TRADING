@@ -144,3 +144,104 @@ function updateDateTime() {
 // For use in other scripts if needed
 window.closeMenu = closeMenu;
 window.toggleMenu = toggleMenu;
+// Function toggleMenu() in your script block:
+function toggleMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const overlay = document.querySelector('.overlay');
+    
+    // Toggles the 'active' class which the CSS uses
+    hamburger.classList.toggle('active');
+    mobileNav.classList.toggle('active');
+    overlay.classList.toggle('active');
+    
+
+}
+// ============================================
+// UNIVERSAL HAMBURGER MENU FUNCTIONALITY
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    initializeHamburgerMenu();
+});
+
+function initializeHamburgerMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const overlay = document.querySelector('.overlay');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+    
+    if (!hamburger || !mobileNav || !overlay) {
+        console.warn('Hamburger menu elements not found');
+        return;
+    }
+    
+    // Toggle menu
+    hamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMenu();
+    });
+    
+    // Close on overlay click
+    overlay.addEventListener('click', function() {
+        closeMenu();
+    });
+    
+    // Close on link click
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            closeMenu();
+        });
+    });
+    
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+    
+    // Close on window resize to desktop
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            if (window.innerWidth > 768 && mobileNav.classList.contains('active')) {
+                closeMenu();
+            }
+        }, 250);
+    });
+}
+
+function toggleMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const overlay = document.querySelector('.overlay');
+    
+    hamburger.classList.toggle('active');
+    mobileNav.classList.toggle('active');
+    overlay.classList.toggle('active');
+    
+    if (mobileNav.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
+}
+
+function closeMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const overlay = document.querySelector('.overlay');
+    
+    if (hamburger && mobileNav && overlay) {
+        hamburger.classList.remove('active');
+        mobileNav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Make functions globally accessible
+window.toggleMenu = toggleMenu;
+window.closeMenu = closeMenu;
