@@ -4419,3 +4419,323 @@ body.menu-open {
         display: none !important;
     }
 }
+/* ============================================
+   HAMBURGER MENU & MOBILE NAVIGATION - FIXED
+   ============================================ */
+
+/* Color Variables */
+:root {
+    --primary: #2c5f2d;
+    --secondary: #97bf0d;
+    --accent: #f9a825;
+    --dark: #333;
+    --light: #f5f5f5;
+    --white: #fff;
+}
+
+/* Header Container */
+header {
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Logo */
+header img {
+    width: 80px;
+    height: auto;
+}
+
+/* Desktop Navigation */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+/* ============================================
+   HAMBURGER ICON
+   ============================================ */
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    z-index: 1001;
+    position: relative;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--dark);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+/* Hamburger Active Animation (X shape) */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(10.5px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-10.5px) rotate(-45deg);
+}
+
+/* Focus state for accessibility */
+.hamburger:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+}
+
+/* ============================================
+   MOBILE NAVIGATION PANEL
+   ============================================ */
+
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    z-index: 1000;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 80px 20px 30px;
+    overflow-y: auto;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-nav.active {
+    right: 0;
+}
+
+/* Mobile Navigation List */
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav li {
+    margin-bottom: 0;
+}
+
+.mobile-nav a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.mobile-nav a:hover,
+.mobile-nav a:focus {
+    background: rgba(255, 255, 255, 0.1);
+    padding-left: 30px;
+}
+
+.mobile-nav a:focus {
+    outline: 2px solid white;
+    outline-offset: -2px;
+}
+
+/* Arrow indicator on hover */
+.mobile-nav a::before {
+    content: '›';
+    position: absolute;
+    left: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 1.3em;
+}
+
+.mobile-nav a:hover::before {
+    opacity: 1;
+}
+
+/* ============================================
+   OVERLAY (Dark Background)
+   ============================================ */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Prevent body scroll when menu is open */
+body.menu-open {
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* ============================================
+   CART ICON (if applicable)
+   ============================================ */
+
+.cart-icon-wrapper {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    margin-left: 20px;
+}
+
+#cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    min-width: 18px;
+    text-align: center;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Tablet and Mobile (768px and below) */
+@media (max-width: 768px) {
+    /* Show hamburger menu */
+    .hamburger {
+        display: flex;
+    }
+    
+    /* Hide desktop navigation */
+    nav,
+    header nav {
+        display: none !important;
+    }
+    
+    /* Adjust header for mobile */
+    .header-container {
+        padding: 12px 15px;
+    }
+    
+    /* Smaller logo on mobile */
+    header img {
+        width: 60px;
+    }
+    
+    /* Full width mobile nav on small screens */
+    .mobile-nav {
+        width: 85%;
+    }
+}
+
+/* Small Mobile (480px and below) */
+@media (max-width: 480px) {
+    .hamburger {
+        width: 28px;
+        height: 22px;
+    }
+    
+    .hamburger span {
+        height: 2.5px;
+    }
+    
+    header img {
+        width: 50px;
+    }
+    
+    .mobile-nav {
+        width: 90%;
+    }
+    
+    .mobile-nav a {
+        font-size: 1rem;
+        padding: 14px 18px;
+    }
+}
+
+/* Desktop (769px and above) */
+@media (min-width: 769px) {
+    /* Hide mobile elements on desktop */
+    .hamburger,
+    .mobile-nav,
+    .overlay {
+        display: none !important;
+    }
+}
+
+/* ============================================
+   SMOOTH SCROLLING (Optional Enhancement)
+   ============================================ */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Close button for mobile nav (optional) */
+.mobile-nav-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1;
+}

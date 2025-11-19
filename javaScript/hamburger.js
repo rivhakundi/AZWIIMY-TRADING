@@ -425,4 +425,67 @@ window.closeMenu = closeMenu;
             });
 
             console.log('Hamburger menu initialized successfully');
-        });
+        });// ============================================
+// HAMBURGER MENU FUNCTIONALITY
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get elements
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const overlay = document.querySelector('.overlay');
+    const body = document.body;
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+
+    // Toggle menu function
+    function toggleMenu() {
+        hamburger.classList.toggle('active');
+        mobileNav.classList.toggle('active');
+        overlay.classList.toggle('active');
+        body.classList.toggle('menu-open');
+    }
+
+    // Close menu function
+    function closeMenu() {
+        hamburger.classList.remove('active');
+        mobileNav.classList.remove('active');
+        overlay.classList.remove('active');
+        body.classList.remove('menu-open');
+    }
+
+    // Hamburger click event
+    if (hamburger) {
+        hamburger.addEventListener('click', toggleMenu);
+    }
+
+    // Overlay click event (close menu when clicking outside)
+    if (overlay) {
+        overlay.addEventListener('click', closeMenu);
+    }
+
+    // Close menu when clicking a link
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    // Close menu on ESC key press
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+
+    // Close menu on window resize to desktop size
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && mobileNav.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+
+    // Prevent scroll issues on iOS
+    if (mobileNav) {
+        mobileNav.addEventListener('touchmove', function(e) {
+            e.stopPropagation();
+        }, { passive: true });
+    }
+});
