@@ -245,3 +245,113 @@ function closeMenu() {
 // Make functions globally accessible
 window.toggleMenu = toggleMenu;
 window.closeMenu = closeMenu;
+// ============================================
+// UNIVERSAL HAMBURGER MENU - ALL PAGES
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    initializeHamburgerMenu();
+});
+
+function initializeHamburgerMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const overlay = document.querySelector('.overlay');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+    
+    // Check if elements exist
+    if (!hamburger) {
+        console.warn('Hamburger button not found');
+        return;
+    }
+    
+    if (!mobileNav) {
+        console.warn('Mobile nav not found');
+        return;
+    }
+    
+    if (!overlay) {
+        console.warn('Overlay not found');
+        return;
+    }
+    
+    console.log('Hamburger menu initialized successfully');
+    
+    // Toggle menu when hamburger is clicked
+    hamburger.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Hamburger clicked');
+        toggleMenu();
+    });
+    
+    // Close menu when overlay is clicked
+    overlay.addEventListener('click', function() {
+        console.log('Overlay clicked');
+        closeMenu();
+    });
+    
+    // Close menu when any navigation link is clicked
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            console.log('Nav link clicked');
+            closeMenu();
+        });
+    });
+    
+    // Close menu when Escape key is pressed
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+            console.log('Escape key pressed');
+            closeMenu();
+        }
+    });
+    
+    // Handle window resize
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            if (window.innerWidth > 768 && mobileNav.classList.contains('active')) {
+                closeMenu();
+            }
+        }, 250);
+    });
+}
+
+function toggleMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const overlay = document.querySelector('.overlay');
+    
+    hamburger.classList.toggle('active');
+    mobileNav.classList.toggle('active');
+    overlay.classList.toggle('active');
+    
+    // Prevent body scroll when menu is open
+    if (mobileNav.classList.contains('active')) {
+        document.body.classList.add('menu-open');
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.classList.remove('menu-open');
+        document.body.style.overflow = '';
+    }
+}
+
+function closeMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const overlay = document.querySelector('.overlay');
+    
+    if (hamburger && mobileNav && overlay) {
+        hamburger.classList.remove('active');
+        mobileNav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        document.body.style.overflow = '';
+    }
+}
+
+// Make functions globally accessible
+window.toggleMenu = toggleMenu;
+window.closeMenu = closeMenu;
