@@ -4271,3 +4271,257 @@ body.menu-open {
         display: none;
     }
 }
+/* Fixed Hamburger Menu Styles - VISIBLE SPANS */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    z-index: 1001;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #8B4513; /* Brown color - change to white if on dark background */
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+    position: relative;
+}
+
+/* Remove the margin-based spacing, use flex gap instead */
+.hamburger span:nth-child(1) {
+    margin-bottom: 0;
+}
+
+.hamburger span:nth-child(2) {
+    /* Middle span */
+}
+
+.hamburger span:nth-child(3) {
+    margin-top: 0;
+}
+
+/* Hamburger Animation when active (X shape) */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+    background-color: #fff; /* White when active */
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+    background-color: #fff; /* White when active */
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: linear-gradient(to bottom, #8B4513, #D2691E);
+    z-index: 999;
+    transition: right 0.4s ease;
+    padding: 80px 30px 30px;
+    overflow-y: auto;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+}
+
+.mobile-nav.active {
+    right: 0;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav li {
+    margin-bottom: 20px;
+}
+
+.mobile-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+
+.mobile-nav a:hover {
+    padding-left: 10px;
+    color: #FFD700;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Show hamburger on mobile and tablets */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex !important; 
+    }
+    
+    nav ul {
+        display: none !important;
+    }
+}
+/* ============================================
+   RESPONSIVE HAMBURGER MENU STYLES
+   ============================================ */
+
+/* Header Container - Responsive */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+}
+
+/* Logo - Responsive */
+.header-container img {
+    max-width: 60px;
+    height: auto;
+}
+
+/* Desktop Navigation */
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+nav a:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+/* Hamburger Menu - Hidden by default */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    z-index: 1001;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #fff; /* White on colored header */
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+    position: relative;
+}
+
+/* Hamburger Animation when active (X shape) */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 85%;
+    max-width: 350px;
+    height: 100vh;
+    background: linear-gradient(to bottom, #8B4513, #D2691E);
+    z-index: 999;
+    transition: right 0.4s ease;
+    padding: 80px 30px 30px;
+    overflow-y: auto;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+}
+
+.mobile-nav.active {
+    right: 0;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav li {
+    margin-bottom: 15px;
+}
+
+.mobile-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+
+
