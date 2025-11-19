@@ -269,13 +269,7 @@
             });
         }
 
-        // --- Lightbox Functionality (New) ---
-
-        /**
-         * Opens the lightbox with the specified image source and alt text.
-         * @param {string} imageSrc - The path to the image to display.
-         * @param {string} imageAlt - The alt text for the image.
-         */
+        
         function openLightbox(imageSrc, imageAlt) {
             const lightbox = document.getElementById('imageLightbox');
             const img = document.getElementById('lightboxImg');
@@ -287,10 +281,6 @@
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
         }
 
-        /**
-         * Closes the lightbox. Can be triggered by the close button or clicking the backdrop.
-         * @param {Event} [event] - The click event object (optional).
-         */
         function closeLightbox(event) {
             const lightbox = document.getElementById('imageLightbox');
             
