@@ -4271,3 +4271,151 @@ body.menu-open {
         display: none;
     }
 }
+/* ============================================
+   HAMBURGER MENU & MOBILE NAVIGATION
+   ============================================ */
+
+/* Hamburger Menu Button */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 30px;
+    height: 21px;
+    position: relative;
+    z-index: 1001;
+    padding: 0;
+    background: transparent;
+    border: none;
+}
+
+/* Hamburger Bars (Spans) */
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--dark, #333);
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+    transform-origin: center;
+    position: relative;
+}
+
+/* Hamburger Animation when active (X shape) */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Mobile Navigation Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mobile Navigation Panel */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: linear-gradient(to bottom, var(--primary, #007bff), var(--secondary, #0056b3));
+    z-index: 999;
+    transition: right 0.4s ease;
+    padding: 80px 30px 30px;
+    overflow-y: auto;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-nav.active {
+    right: 0;
+}
+
+/* Mobile Navigation List */
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav li {
+    margin-bottom: 20px;
+}
+
+.mobile-nav a {
+    color: var(--white, #fff);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: block;
+    padding: 12px 15px;
+    border-radius: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.mobile-nav a:hover,
+.mobile-nav a:focus {
+    background: rgba(255, 255, 255, 0.1);
+    padding-left: 20px;
+}
+
+/* Prevent body scroll when menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    /* Show hamburger on mobile */
+    .hamburger {
+        display: flex;
+    }
+    
+    /* Hide desktop navigation */
+    nav ul,
+    header nav {
+        display: none;
+    }
+    
+    /* Adjust header padding for mobile */
+    .header-container {
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media (min-width: 769px) {
+    /* Hide mobile nav elements on desktop */
+    .mobile-nav,
+    .overlay,
+    .hamburger {
+        display: none !important;
+    }
+}
