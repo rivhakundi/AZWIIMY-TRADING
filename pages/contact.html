@@ -15,7 +15,10 @@
     
     <link rel="stylesheet" href="../css/style.css">
     
-    </head>
+    <style>
+       
+    </style>
+</head>
 <body>
     <header>
         <div class="container header-container">
@@ -114,33 +117,52 @@
             <!-- Contact Form -->
             <section class="contact-form-section">
                 <h2>Send Us a Message</h2>
-                <form id="contactForm">
-                    <div class="form-group">
+                
+                <div class="success-message" id="successMessage">
+                    ✅ Success! Your message has been submitted successfully. We'll get back to you soon.
+                </div>
+                
+                <form id="contactForm" novalidate>
+                    <div class="form-group" id="nameGroup">
                         <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        <span class="error-message">Please enter your full name (minimum 2 characters)</span>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="form-group" id="emailGroup">
                         <label for="email">Email Address *</label>
                         <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                        <span class="error-message">Please enter a valid email address</span>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="text" id="phone" name="phone" placeholder="(082) 123-4567">
+                    <div class="form-group" id="phoneGroup">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(082) 123-4567" required>
+                        <span class="error-message">Please enter a valid phone number (minimum 10 digits)</span>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="form-group" id="messageGroup">
                         <label for="message">Your Message *</label>
                         <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
+                        <span class="error-message">Please enter your message (minimum 10 characters)</span>
                     </div>
 
-                    <button type="submit" class="submit-btn">Send Message</button>
-                    
-                    <div class="success-message" id="successMessage">
-                        ✓ Thank you! Your message has been sent successfully. We'll get back to you soon.
-                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
                 </form>
+            </section>
+            
+            <!-- Google Feedback Form Section -->
+            <section class="feedback-section">
+                <h2>📝 Share Your Feedback</h2>
+                <p>Help us improve! Share your experience or suggestions through our Google Feedback Form.</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScb_1hHmZxuzU2fYDkcKIqj5Bb_QLv1QF3fU3sJ67fDOdhZHg/viewform?usp=dialog" 
+                   target="_blank" 
+                   class="feedback-button">
+                    Open Feedback Form
+                </a>
+                <p style="margin-top: 15px; font-size: 0.9em; color: #999;">
+                    Your feedback helps us serve you better
+                </p>
             </section>
         </div>
     </main>
@@ -245,41 +267,184 @@
             }
         });
 
-        // Form submission handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        // Form validation and submission handler
+        const form = document.getElementById('contactForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
+        const messageInput = document.getElementById('message');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Email validation regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+        // Phone validation regex (supports various formats)
+        const phoneRegex = /^[\d\s\-\(\)+]+$/;
+
+        // Real-time validation on blur
+        nameInput.addEventListener('blur', validateName);
+        emailInput.addEventListener('blur', validateEmail);
+        phoneInput.addEventListener('blur', validatePhone);
+        messageInput.addEventListener('blur', validateMessage);
+
+        // Clear errors on input
+        nameInput.addEventListener('input', () => clearError('nameGroup'));
+        emailInput.addEventListener('input', () => clearError('emailGroup'));
+        phoneInput.addEventListener('input', () => clearError('phoneGroup'));
+        messageInput.addEventListener('input', () => clearError('messageGroup'));
+
+        function validateName() {
+            const nameGroup = document.getElementById('nameGroup');
+            const name = nameInput.value.trim();
+            
+            if (name.length < 2) {
+                showError('nameGroup');
+                return false;
+            }
+            
+            showSuccess('nameGroup');
+            return true;
+        }
+
+        function validateEmail() {
+            const emailGroup = document.getElementById('emailGroup');
+            const email = emailInput.value.trim();
+            
+            if (!emailRegex.test(email)) {
+                showError('emailGroup');
+                return false;
+            }
+            
+            showSuccess('emailGroup');
+            return true;
+        }
+
+        function validatePhone() {
+            const phoneGroup = document.getElementById('phoneGroup');
+            const phone = phoneInput.value.trim();
+            
+            if (phone.length < 10 || !phoneRegex.test(phone)) {
+                showError('phoneGroup');
+                return false;
+            }
+            
+            showSuccess('phoneGroup');
+            return true;
+        }
+
+        function validateMessage() {
+            const messageGroup = document.getElementById('messageGroup');
+            const message = messageInput.value.trim();
+            
+            if (message.length < 10) {
+                showError('messageGroup');
+                return false;
+            }
+            
+            showSuccess('messageGroup');
+            return true;
+        }
+
+        function showError(groupId) {
+            const group = document.getElementById(groupId);
+            group.classList.add('error');
+            group.classList.remove('success');
+        }
+
+        function showSuccess(groupId) {
+            const group = document.getElementById(groupId);
+            group.classList.remove('error');
+            group.classList.add('success');
+        }
+
+        function clearError(groupId) {
+            const group = document.getElementById(groupId);
+            group.classList.remove('error');
+            group.classList.remove('success');
+        }
+
+        // Form submission with validation
+        form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const message = document.getElementById('message').value;
+            // Validate all fields
+            const isNameValid = validateName();
+            const isEmailValid = validateEmail();
+            const isPhoneValid = validatePhone();
+            const isMessageValid = validateMessage();
             
-            // Show success message
-            const successMessage = document.getElementById('successMessage');
-            successMessage.classList.add('show');
-            
-            // Clear form
-            this.reset();
-            
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                successMessage.classList.remove('show');
-            }, 5000);
-            
-            // Scroll to success message
-            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // In production, you would send the data to a server here:
-            /*
-            fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ name, email, phone, message })
-            });
-            */
+            // If all validations pass
+            if (isNameValid && isEmailValid && isPhoneValid && isMessageValid) {
+                // Disable submit button and show loading state
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.style.background = '#999';
+                
+                // Get form values
+                const formData = {
+                    name: nameInput.value.trim(),
+                    email: emailInput.value.trim(),
+                    phone: phoneInput.value.trim(),
+                    message: messageInput.value.trim(),
+                    timestamp: new Date().toISOString()
+                };
+                
+                // Simulate sending (in production, send to server)
+                setTimeout(() => {
+                    // Show success message
+                    const successMessage = document.getElementById('successMessage');
+                    successMessage.classList.add('show');
+                    
+                    // Clear form
+                    form.reset();
+                    clearError('nameGroup');
+                    clearError('emailGroup');
+                    clearError('phoneGroup');
+                    clearError('messageGroup');
+                    
+                    // Re-enable submit button
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message';
+                    submitBtn.style.background = '';
+                    
+                    // Hide success message after 8 seconds
+                    setTimeout(() => {
+                        successMessage.classList.remove('show');
+                    }, 8000);
+                    
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // Log form data (in production, send to server/email)
+                    console.log('Form submitted:', formData);
+                    
+                    /* 
+                    In production, you would send the data like this:
+                    
+                    fetch('/api/contact', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred. Please try again.');
+                    });
+                    */
+                }, 1500); // Simulate network delay
+            } else {
+                // Scroll to first error
+                const firstError = document.querySelector('.form-group.error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
         });
     </script>
 </body>
